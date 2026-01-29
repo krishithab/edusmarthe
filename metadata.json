@@ -1,0 +1,9 @@
+{
+  "name": "SmartEdu",
+  "description": "A comprehensive AI-powered educational ecosystem connecting students, mentors, and institutions with personalized learning pathways and startup innovation tools.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

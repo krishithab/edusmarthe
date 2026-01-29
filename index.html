@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#020617">
+    <title>SmartEdu | Professional Development Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                          DEFAULT: "#4F46E5", // Indigo 600
+                          light: "#6366F1",
+                          dark: "#818CF8"
+                        },
+                        "accent-action": {
+                          dark: "#818CF8", 
+                          light: "#4F46E5" 
+                        },
+                        "primary-custom": "#4F46E5",
+                    },
+                    backgroundColor: {
+                        "main-dark": "#020617", // Deeper Slate/Black
+                        "surface-dark": "#0F172A", // Deep Navy Surface
+                        "elevated-dark": "#1E293B",
+                        "main-light": "#F8FAFC", // Clean Slate White
+                        "surface-light": "#FFFFFF",
+                        "elevated-light": "#F1F5F9",
+                    },
+                    textColor: {
+                        "primary-dark": "#F8FAFC", 
+                        "secondary-dark": "#94A3B8", // Muted Slate
+                        "primary-light": "#0F172A", // Deep Navy text
+                        "secondary-light": "#475569", // Slate 600
+                    },
+                    borderColor: {
+                        "subtle-dark": "rgba(255, 255, 255, 0.06)",
+                        "subtle-light": "rgba(15, 23, 42, 0.08)",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "sans": ["Lexend", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --accent: #4F46E5; }
+        .dark { --accent: #818CF8; }
+
+        body { 
+            font-family: 'Lexend', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+            letter-spacing: -0.015em;
+            overflow-x: hidden;
+        }
+
+        /* Calm Stepper System */
+        .stepper-muted { @apply opacity-30 grayscale; }
+        .stepper-active { @apply ring-2 ring-primary ring-offset-4 ring-offset-main-light dark:ring-offset-main-dark; }
+        
+        /* Professional Chip System */
+        .chip-base {
+            @apply px-5 py-3 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all duration-200 flex items-center gap-2;
+        }
+        .dark .chip-unselected {
+            @apply bg-elevated-dark text-secondary-dark border border-transparent hover:border-primary/30;
+        }
+        .dark .chip-selected {
+            @apply bg-primary text-white border-transparent shadow-lg shadow-primary/20 scale-[1.02];
+        }
+        .light .chip-unselected {
+            @apply bg-elevated-light text-secondary-light border border-subtle-light hover:border-primary/30;
+        }
+        .light .chip-selected {
+            @apply bg-primary text-white border-transparent shadow-lg shadow-primary/20;
+        }
+
+        /* Card System */
+        .prof-card {
+            @apply rounded-[2.5rem] transition-all duration-300;
+        }
+        .dark .prof-card {
+            @apply bg-surface-dark border border-subtle-dark;
+        }
+        .light .prof-card {
+            @apply bg-surface-light border border-subtle-light shadow-sm shadow-slate-200/50;
+        }
+
+        /* Institutional Buttons */
+        .btn-primary {
+            @apply bg-primary text-white font-black rounded-2xl hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3 px-8 py-4 uppercase tracking-widest text-[11px];
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { @apply bg-primary/20; border-radius: 10px; }
+
+        .theme-transition {
+            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease, color 0.4s ease;
+        }
+        
+        /* ENHANCED CONTRAST INPUTS */
+        input, select, textarea {
+          @apply bg-white dark:bg-slate-900 border-subtle-light dark:border-subtle-dark text-slate-900 dark:text-slate-50 transition-all focus:ring-2 focus:ring-primary outline-none rounded-xl;
+        }
+        
+        /* Fix for invisible text on focus or autofill */
+        input:focus, select:focus, textarea:focus {
+           @apply bg-white dark:bg-slate-800 text-slate-950 dark:text-white border-primary/50;
+        }
+
+        ::placeholder {
+          @apply text-slate-400 dark:text-slate-500 opacity-60 font-medium;
+        }
+
+        .glass {
+            @apply backdrop-blur-md bg-white/70 dark:bg-main-dark/70;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.48.1"
+  }
+}
+</script>
+</head>
+<body class="bg-main-light dark:bg-main-dark text-primary-light dark:text-primary-dark theme-transition min-h-screen antialiased selection:bg-primary/30">
+    <div id="root"></div>
+</body>
+</html>
